@@ -1,23 +1,19 @@
-import { useState } from 'react'
+
 import Cake from '../assets/icon-remove-item.svg'
 
-function Cart({someItems}) {
+function Cart({someItems,numberOfItemsInCart}) {
 	const filtered=someItems.filter(
 		(item)=>item.number>=1
 	)
-	const [cartItems,setCartItems]=useState(filtered)
-	const filteredItems=cartItems.map(
+	
+
+
+	const filteredItems=filtered.map(
 		(item)=><li key={item.id}>
 			<p>{item.name}</p>
 			<p>
 				&#215; {item.number} @ ${item.price} ${item.number*item.price}
-				<button onClick={()=>{
-					setCartItems(
-						cartItems.filter(a=>
-							a.id !== item.id
-						)
-					)
-				}}>
+				<button>
 					<img src={Cake} alt="" />
 				</button>
 			</p>
@@ -26,10 +22,9 @@ function Cart({someItems}) {
 
 	return(
 		<>
-				<p>Your Cart()</p>
+				<p>Your Cart({numberOfItemsInCart})</p>
 				<ul>
 					{filteredItems}
-
 				</ul>
 		</>
 )

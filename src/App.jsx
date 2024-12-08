@@ -16,9 +16,14 @@ function App() {
 
   const [items,setItems]=useState(data)
 
-	function addToCart(userId){
-		setItems()
-	}
+	const handleAddToCart = (id) => {
+    // Update the number for the item with the given id
+    setItems((prevItems) =>
+      prevItems.map((item) =>
+        item.id === id ? { ...item, number: item.number + 1 } : item
+      )
+    );
+  };
 
 	const foods=items.map(
 		(item)=><li key={item.id}>
@@ -35,7 +40,7 @@ function App() {
           {item.id===8 ? <img src={Cotta} alt="" /> : <p></p>}
 
 				</div>
-				<button>Add to Cart</button>
+				<button onClick={() => handleAddToCart(item.id)}>Add to Cart</button>
 				<p>{item.number}</p>
 			</div>
 			<div>
@@ -53,7 +58,7 @@ function App() {
         {foods}
       </ul>
 
-      <Cart someItems={items}/>
+      <Cart someItems={items} numberOfItemsInCart={5}/>
     </>
   )
 }

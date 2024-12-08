@@ -5,7 +5,6 @@ const data=[
 		category:'Waffle',
 		price: 6.50,
 		number: 0,
-		image:1
 	},
 				{
 		id:1,
@@ -27,7 +26,7 @@ const data=[
 		name: 'Classic Tiramisu',
 		category:'Tiramusu',
 		price: 5.50,
-		number: 5
+		number: 0
 	},
 				{
 		id:4,
@@ -55,14 +54,14 @@ const data=[
 		name: 'Salted Caramel Brownie',
 		category:'Brownie',
 		price: 4.50,
-		number: 2
+		number: 0
 	},
 				{
 		id: 8,
 		name: 'Vanilla Panna Cotta Panna',
 		category:'Cotta',
 		price: 6.50,
-		number: 1
+		number: 0
 	},
 ]
 
