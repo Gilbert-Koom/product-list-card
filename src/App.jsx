@@ -15,12 +15,34 @@ import data from "./data"
 
 function App() {
 
-  const [carts,setCarts]=useState(data)
+  const [items,setItems]=useState(data)
+	const foods=items.map(
+		(item)=><li key={item.id}>
+			<div>
+				<div>
+					{
+						item.id===0 ? (
+							<img src={Cotta}/>
+						):(<p></p>)
+					}
+				</div>
+				<img src={macaron} alt="" />
+				<button>Add to Cart</button>
+				<p>{item.number}</p>
+			</div>
+			<div>
+				<p>{item.category}</p>
+				<p>{item.name}</p>
+				<p>{item.price}</p>
+			</div>
 
+		</li>
+	)
 
   return (
     <>
       <p>Deserts</p>
+			<ul>{foods}</ul>
       <Item
         name={'Waffle'}
         image={waffle}
@@ -85,7 +107,7 @@ function App() {
 
       />
 
-      <Cart someItems={carts}/>
+      <Cart someItems={items}/>
     </>
   )
 }
