@@ -10,11 +10,40 @@ import Cotta from './assets/image-panna-cotta-mobile.jpg'
 import Pie from './assets/image-meringue-mobile.jpg'
 import { useState } from "react"
 import data from "./data"
+import Remover from './assets/icon-remove-item.svg'
+import Increment from './assets/icon-increment-quantity.svg'
+import Decrement from './assets/icon-decrement-quantity.svg'
 
 
 function App() {
 
   const [items,setItems]=useState(data)
+
+  const removeFromCart = (id) => {
+    setItems(items.map(product => 
+      product.id === id ? { ...product, number: 0 } : product
+    ));
+  };
+
+
+	const totalItemsInCart= items[0].number+items[1].number+items[2].number+items[3].number+items[4].number+items[5].number+items[6].number+items[7].number+items[8].number
+
+
+  const filteredItems = items
+    .filter(item => item.number > 0)
+    .map(item => (
+      <li key={item.id}>
+        <p>{item.name}</p>
+        <p>
+          &#215; {item.number} @ ${item.price} = ${item.number * item.price}
+        </p>
+        <button onClick={() => removeFromCart(item.id)}>
+					<img src={Remover} alt="" />
+				</button>
+      </li>
+    ));
+
+
 
 	const handleAddToCart = (id) => {
     // Update the number for the item with the given id
@@ -24,6 +53,8 @@ function App() {
       )
     );
   };
+
+
   const handleSubtractToCart = (id) => {
     // Update the number for the item with the given id
     setItems((prevItems) =>
@@ -32,6 +63,8 @@ function App() {
       )
     );
   };
+
+
 
 	const foods=items.map(
 		(item)=><li key={item.id}>
@@ -48,8 +81,12 @@ function App() {
           {item.id===8 ? <img src={Cotta} alt="" /> : <p></p>}
 
 				</div>
-				<button onClick={() => handleAddToCart(item.id)}>Add to Cart</button>
-        <button onClick={() => handleSubtractToCart(item.id)}>-</button>
+				<button onClick={() => handleAddToCart(item.id)}>
+					<img src={Increment} alt="" />
+				</button>
+        <button onClick={() => handleSubtractToCart(item.id)}>
+					<img src={Decrement} alt="" />
+				</button>
 				<p>{item.number}</p>
 			</div>
 			<div>
@@ -67,7 +104,8 @@ function App() {
         {foods}
       </ul>
 
-      <Cart someItems={items} numberOfItemsInCart={5}/>
+      <p>Carts({totalItemsInCart})</p>
+      <ul>{filteredItems}</ul>
     </>
   )
 }
