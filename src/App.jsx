@@ -100,7 +100,7 @@ function App() {
 
   return (
     <>
-      <ul>
+      <ul className="bg-gray-200 ml-96">
         {foods}
       </ul>
 
