@@ -1,4 +1,5 @@
-import Remover from '../assets/icon-remove-item.svg'
+ 
+import Cake from '../assets/icon-remove-item.svg'
 
 function Cart({someItems,numberOfItemsInCart}) {
 	let filtered=someItems.filter(
@@ -12,7 +13,7 @@ function Cart({someItems,numberOfItemsInCart}) {
 			<p>
 				&#215; {item.number} @ ${item.price} ${item.number*item.price}
 				<button>
-					<img src={Remover} alt="" />
+					<img src={Cake} alt="" />
 				</button>
 			</p>
 		</li>

@@ -24,6 +24,14 @@ function App() {
       )
     );
   };
+  const handleSubtractToCart = (id) => {
+    // Update the number for the item with the given id
+    setItems((prevItems) =>
+      prevItems.map((item) =>
+        item.id === id ? { ...item, number: item.number - 1 } : item
+      )
+    );
+  };
 
 	const foods=items.map(
 		(item)=><li key={item.id}>
@@ -41,6 +49,7 @@ function App() {
 
 				</div>
 				<button onClick={() => handleAddToCart(item.id)}>Add to Cart</button>
+        <button onClick={() => handleSubtractToCart(item.id)}>-</button>
 				<p>{item.number}</p>
 			</div>
 			<div>

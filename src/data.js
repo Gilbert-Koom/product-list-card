@@ -4,7 +4,7 @@ const data=[
 		name: 'Desserts Waffle with Berries',
 		category:'Waffle',
 		price: 6.50,
-		number: 0,
+		number: 5,
 	},
 				{
 		id:1,
