@@ -7,21 +7,13 @@ import Cake from './assets/image-cake-mobile.jpg'
 import Brownie from './assets/image-brownie-mobile.jpg'
 import Cotta from './assets/image-panna-cotta-mobile.jpg'
 import Pie from './assets/image-meringue-mobile.jpg'
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import data from "./data"
 import Remover from './assets/icon-remove-item.svg'
 import Carbon from './assets/icon-carbon-neutral.svg'
 import Increment from './assets/icon-increment-quantity.svg'
 import Decrement from './assets/icon-decrement-quantity.svg'
 import Empty from './assets/illustration-empty-cart.svg'
-import { Button } from './components/ui/button'
-
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion"
 
 import {
   AlertDialog,
@@ -110,7 +102,7 @@ function App() {
     // Update the number for the item with the given id
     setItems((prevItems) =>
       prevItems.map((item) =>
-        item.id === id ? { ...item, number: item.number - 1 } : item
+        item.id === id && item.number > 0 ? { ...item, number: item.number - 1 } : item
       )
     );
   };
@@ -149,6 +141,21 @@ function App() {
 		</li>
 	)
 
+  function alertAction() {
+    setItems(data)
+    setIsCartEmpty(true)
+    
+  }
+
+  useEffect(()=>{
+    if (totalItemsInCart===0) {
+      setIsCartEmpty(true)
+      
+    }
+  },[totalItemsInCart])
+
+
+
   return (
     <>
       <ul className="bg-gray-200">
@@ -183,7 +190,7 @@ function App() {
 									</AlertDialogHeader>
 									<AlertDialogFooter>
 										
-										<AlertDialogAction>Start New Order</AlertDialogAction>
+										<AlertDialogAction onClick={()=>{alertAction()}}>Start New Order</AlertDialogAction>
 									</AlertDialogFooter>
 								</AlertDialogContent>
 							</AlertDialog>
