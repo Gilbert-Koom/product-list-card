@@ -14,6 +14,7 @@ import Carbon from './assets/icon-carbon-neutral.svg'
 import Increment from './assets/icon-increment-quantity.svg'
 import Decrement from './assets/icon-decrement-quantity.svg'
 import Empty from './assets/illustration-empty-cart.svg'
+import './App.css'
 
 import {
   AlertDialog,
@@ -37,6 +38,11 @@ function App() {
   const removeFromCart = (id) => {
     setItems(items.map(product => 
       product.id === id ? { ...product, number: 0 } : product
+    ));
+  };
+	const changeStyle = (id) => {
+    setItems(items.map(product => 
+      product.id === id ? { ...product, button1:'dontShow',button2:'show',number: product.number +1 } : product
     ));
   };
 
@@ -122,15 +128,23 @@ function App() {
           {item.id===6 ? <img src={Cake} alt="" /> : <p></p>}
           {item.id===7 ? <img src={Brownie} alt="" /> : <p></p>}
           {item.id===8 ? <img src={Cotta} alt="" /> : <p></p>}
+					<button className={item.button1} onClick={()=>changeStyle(item.id)}>Add to Cart</button>
+					<div className={item.button2}>
+						<button onClick={() => handleSubtractToCart(item.id)}>
+							<img src={Decrement} alt="" />
+						</button>
+						<p>{item.number}</p>
+						<button onClick={() => handleAddToCart(item.id)}>
+							<img src={Increment} alt="" />
+						</button>
+
+					</div>
 
 				</div>
-				<button onClick={() => handleAddToCart(item.id)}>
-					<img src={Increment} alt="" />
-				</button>
-        <button onClick={() => handleSubtractToCart(item.id)}>
-					<img src={Decrement} alt="" />
-				</button>
-				<p>{item.number}</p>
+				
+
+        
+				
 			</div>
 			<div>
 				<p>{item.category}</p>   
