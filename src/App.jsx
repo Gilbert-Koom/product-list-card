@@ -42,15 +42,13 @@ function App() {
   };
 	const changeStyle = (id) => {
     setItems(items.map(product => 
-      product.id === id ? { ...product, button1:'dontShow',button2:'show',number: product.number +1 } : product
+      product.id === id ? { ...product, button1:'dontShow',button2:'show'} : product
     ));
   };
 
 
 	const totalItemsInCart= items[0].number+items[1].number+items[2].number+items[3].number+items[4].number+items[5].number+items[6].number+items[7].number+items[8].number
 	const orderTotal= (items[0].number*items[0].price)+(items[1].number*items[1].price)+(items[2].number*items[2].price)+(items[3].number*items[3].price)+(items[4].number*items[4].price)+(items[5].number*items[5].price)+(items[6].number*items[6].price)+(items[7].number*items[7].price)+(items[8].number*items[8].price)
-
-
 
 
   const filteredItems = items
