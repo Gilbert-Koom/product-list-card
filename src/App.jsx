@@ -14,14 +14,6 @@ import Carbon from './assets/icon-carbon-neutral.svg'
 import Increment from './assets/icon-increment-quantity.svg'
 import Decrement from './assets/icon-decrement-quantity.svg'
 import Empty from './assets/illustration-empty-cart.svg'
-import { Button } from './components/ui/button'
-
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion"
 
 import {
   AlertDialog,
@@ -51,7 +43,7 @@ function App() {
 
 	const totalItemsInCart= items[0].number+items[1].number+items[2].number+items[3].number+items[4].number+items[5].number+items[6].number+items[7].number+items[8].number
 	const orderTotal= (items[0].number*items[0].price)+(items[1].number*items[1].price)+(items[2].number*items[2].price)+(items[3].number*items[3].price)+(items[4].number*items[4].price)+(items[5].number*items[5].price)+(items[6].number*items[6].price)+(items[7].number*items[7].price)+(items[8].number*items[8].price)
-	
+
 
 
 
@@ -110,7 +102,7 @@ function App() {
     // Update the number for the item with the given id
     setItems((prevItems) =>
       prevItems.map((item) =>
-        item.id === id ? { ...item, number: item.number - 1 } : item
+        item.id === id && item.number > 0 ? { ...item, number: item.number - 1 } : item
       )
     );
   };
@@ -183,7 +175,7 @@ function App() {
 									</AlertDialogHeader>
 									<AlertDialogFooter>
 										
-										<AlertDialogAction>Start New Order</AlertDialogAction>
+										<AlertDialogAction onClick={()=>setItems(data)}>Start New Order</AlertDialogAction>
 									</AlertDialogFooter>
 								</AlertDialogContent>
 							</AlertDialog>
