@@ -7,7 +7,7 @@ import Cake from './assets/image-cake-mobile.jpg'
 import Brownie from './assets/image-brownie-mobile.jpg'
 import Cotta from './assets/image-panna-cotta-mobile.jpg'
 import Pie from './assets/image-meringue-mobile.jpg'
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import data from "./data"
 import Remover from './assets/icon-remove-item.svg'
 import Carbon from './assets/icon-carbon-neutral.svg'
@@ -141,6 +141,21 @@ function App() {
 		</li>
 	)
 
+  function alertAction() {
+    setItems(data)
+    setIsCartEmpty(true)
+    
+  }
+
+  useEffect(()=>{
+    if (totalItemsInCart===0) {
+      setIsCartEmpty(true)
+      
+    }
+  },[totalItemsInCart])
+
+
+
   return (
     <>
       <ul className="bg-gray-200">
@@ -175,7 +190,7 @@ function App() {
 									</AlertDialogHeader>
 									<AlertDialogFooter>
 										
-										<AlertDialogAction onClick={()=>setItems(data)}>Start New Order</AlertDialogAction>
+										<AlertDialogAction onClick={()=>{alertAction()}}>Start New Order</AlertDialogAction>
 									</AlertDialogFooter>
 								</AlertDialogContent>
 							</AlertDialog>
