@@ -1,6 +1,25 @@
 .show{
 	display: flex;
+	width: 50%;
+	height: 40px;
+	justify-content: space-around;
+	align-items: center;
+	background-color: white;
+	border-radius: 999px;
+	margin: auto;
+	border-style: solid;
+	border-color: green;
+	position: absolute;
+	bottom: -20px;
+	left: 25%;
+	border: 3px solid hsl(13, 31%, 94%);
+	
+
 }
 .dontShow{
 	display: none;
+
+}
+#second_button{
+	background-color: hsl(14, 86%, 42%);
 }

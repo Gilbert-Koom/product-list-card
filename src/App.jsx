@@ -13,6 +13,7 @@ import Remover from './assets/icon-remove-item.svg'
 import Carbon from './assets/icon-carbon-neutral.svg'
 import Increment from './assets/icon-increment-quantity.svg'
 import Decrement from './assets/icon-decrement-quantity.svg'
+import Cart from './assets/icon-add-to-cart.svg'
 import Empty from './assets/illustration-empty-cart.svg'
 import './App.css'
 
@@ -114,24 +115,27 @@ function App() {
 
 
 	const foods=items.map(
-		(item)=><li key={item.id}>
+		(item)=><li key={item.id} className='w-[85%] m-auto'>
 			<div>
-				<div>
-          {item.id===0 ? <img src={waffle} alt="" /> : <p></p>}
-          {item.id===1 ? <img src={creme} alt="" /> : <p></p>}
-          {item.id===2 ? <img src={macaron} alt="" /> : <p></p>}
-          {item.id===3 ? <img src={Tiramisu} alt="" /> : <p></p>}
-          {item.id===4 ? <img src={Baklava} alt="" /> : <p></p>}
-          {item.id===5 ? <img src={Pie} alt="" /> : <p></p>}
-          {item.id===6 ? <img src={Cake} alt="" /> : <p></p>}
-          {item.id===7 ? <img src={Brownie} alt="" /> : <p></p>}
-          {item.id===8 ? <img src={Cotta} alt="" /> : <p></p>}
-					<button className={item.button1} onClick={()=>changeStyle(item.id)}>Add to Cart</button>
-					<div className={item.button2}>
+				<div className='relative mb-7'>
+          {item.id===0 ? <img src={waffle} alt="" className='rounded-md'/> : <p></p>}
+          {item.id===1 ? <img src={creme} alt="" className='rounded-md' /> : <p></p>}
+          {item.id===2 ? <img src={macaron} alt="" className='rounded-md' /> : <p></p>}
+          {item.id===3 ? <img src={Tiramisu} alt="" className='rounded-md'/> : <p></p>}
+          {item.id===4 ? <img src={Baklava} alt=""  className='rounded-md'/> : <p></p>}
+          {item.id===5 ? <img src={Pie} alt="" className='rounded-md' /> : <p></p>}
+          {item.id===6 ? <img src={Cake} alt="" className='rounded-md' /> : <p></p>}
+          {item.id===7 ? <img src={Brownie} alt=""  className='rounded-md'/> : <p></p>}
+          {item.id===8 ? <img src={Cotta} alt=""  className='rounded-md'/> : <p></p>}
+					<button className={item.button1} onClick={()=>changeStyle(item.id)} id='button_1'>
+            <img src={Cart} alt="" />
+            <p>Add To Cart</p>
+          </button>
+					<div className={item.button2} id='second_button'>
 						<button onClick={() => handleSubtractToCart(item.id)}>
 							<img src={Decrement} alt="" />
 						</button>
-						<p>{item.number}</p>
+						<p className='text-white'>{item.number}</p>
 						<button onClick={() => handleAddToCart(item.id)}>
 							<img src={Increment} alt="" />
 						</button>
@@ -147,7 +151,7 @@ function App() {
 			<div>
 				<p>{item.category}</p>   
 				<p>{item.name}</p>
-				<p>{item.price}</p>
+				<p>${item.price}</p>
 			</div>
 
 		</li>
@@ -170,7 +174,8 @@ function App() {
 
   return (
     <>
-      <ul className="bg-gray-200">
+			<p className='ml-[7.5%]'>Desserts</p>
+      <ul>
         {foods}
       </ul>
 
