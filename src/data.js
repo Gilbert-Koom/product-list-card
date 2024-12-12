@@ -74,7 +74,7 @@ const data=[
 	},
 				{
 		id: 8,
-		name: 'Vanilla Panna Cotta Panna',
+		name: 'Vanilla Panna Cotta',
 		category:'Cotta',
 		price: 6.50,
 		number: 0,

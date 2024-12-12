@@ -15,6 +15,7 @@ import Increment from './assets/icon-increment-quantity.svg'
 import Decrement from './assets/icon-decrement-quantity.svg'
 import Cart from './assets/icon-add-to-cart.svg'
 import Empty from './assets/illustration-empty-cart.svg'
+import confirmed from './assets/icon-order-confirmed.svg'
 import './App.css'
 
 import {
@@ -55,37 +56,47 @@ function App() {
   const filteredItems = items
     .filter(item => item.number > 0)
     .map(item => (
-      <li key={item.id}>
-        <p>{item.name}</p>
-        <p>
-          &#215; {item.number} @ ${item.price} = ${item.number * item.price}
+      <li key={item.id} className='flex items-center justify-between w-[90%] m-auto'>
+				<div>
+				<p>{item.name}</p>
+				<p>
+          {item.number}&#215;  @ ${item.price} = ${item.number * item.price}
         </p>
-        <button onClick={() => removeFromCart(item.id)}>
+
+				</div>
+				<button onClick={() => removeFromCart(item.id)}>
 					<img src={Remover} alt="" />
 				</button>
+        
+        
+        
       </li>
     ));
 
 		const dialogueContent = items
     .filter(item => item.number > 0)
     .map(item => (
-      <li key={item.id}>
+      <li key={item.id} className='flex w-[80%] bg-red-950 justify-around items-center'>
 				<div>
-          {item.id===0 ? <img src={waffle} alt="" /> : <p></p>}
-          {item.id===1 ? <img src={creme} alt="" /> : <p></p>}
-          {item.id===2 ? <img src={macaron} alt="" /> : <p></p>}
-          {item.id===3 ? <img src={Tiramisu} alt="" /> : <p></p>}
-          {item.id===4 ? <img src={Baklava} alt="" /> : <p></p>}
-          {item.id===5 ? <img src={Pie} alt="" /> : <p></p>}
-          {item.id===6 ? <img src={Cake} alt="" /> : <p></p>}
-          {item.id===7 ? <img src={Brownie} alt="" /> : <p></p>}
-          {item.id===8 ? <img src={Cotta} alt="" /> : <p></p>}
+          {item.id===0 ? <img src={waffle} alt="" className='w-5 h-5'/> : <p></p>}
+          {item.id===1 ? <img src={creme} alt="" className='w-5 h-5'/> : <p></p>}
+          {item.id===2 ? <img src={macaron} alt="" className='w-5 h-5'/> : <p></p>}
+          {item.id===3 ? <img src={Tiramisu} alt="" className='w-5 h-5'/> : <p></p>}
+          {item.id===4 ? <img src={Baklava} alt="" className='w-5 h-5'/> : <p></p>}
+          {item.id===5 ? <img src={Pie} alt="" className='w-5 h-5'/> : <p></p>}
+          {item.id===6 ? <img src={Cake} alt="" className='w-5 h-5' /> : <p></p>}
+          {item.id===7 ? <img src={Brownie} alt=""  className='w-5 h-5'/> : <p></p>}
+          {item.id===8 ? <img src={Cotta} alt="" className='w-5 h-5'/> : <p></p>}
 
 				</div>
-        <p>{item.name}</p>
-        <p>
-          &#215; {item.number} @ ${item.price} = ${item.number * item.price}
-        </p>
+				<div className=''>
+					<p>{item.name}</p>
+					<div>
+						 {item.number}&#215; @ ${item.price}
+
+					</div>
+				</div>
+				<p>${item.number * item.price}</p>
       </li>
     ));
 
@@ -179,27 +190,43 @@ function App() {
         {foods}
       </ul>
 
-			<div>
-				<p>Carts({totalItemsInCart})</p>
+			<div className='bg-yellow-300 w-[85%] m-auto'>
+				<p className='w-[79%] m-auto text-[red]'>Your Cart({totalItemsInCart})</p>
 				<div>
 					{
 						isCartEmpty ?
-						<div>
-							<img src={Empty} alt="" />
-							<p>Your added items will appear here</p>
+						<div className=''>
+							<div className='flex justify-center items-center'>
+								<img src={Empty} alt="" />
+							</div>
+							<p className='flex justify-center'><p className=''>Your added items will appear here</p></p>
 						</div>:
-						<div className="bg-red-950">
-							<ul>{filteredItems}</ul>
-							<p>Order Total ${orderTotal}</p>
-							<p> <img src={Carbon} alt="" /> This carbon neutral delivery</p>
+						<div className="">
+							<ul className='w-[85%] m-auto'>{filteredItems}</ul>
+							<div className='flex justify-between w-[77%] m-auto'>
+								<p>Order Total </p>
+								<p>${orderTotal}</p>
+							</div>
+							<div className='flex m-auto justify-center bg-slate-600 w-[77%] rounded-md'>
+								<img src={Carbon} alt="" />
+								<p className=''>This carbon neutral delivery</p>
+
+							</div>
+							
 							<AlertDialog>
-								<AlertDialogTrigger>Confirm Order</AlertDialogTrigger>
+								<AlertDialogTrigger className='w-[77%] bg-green-100 rounded-lg m-auto flex justify-center items-center'>
+									<p>Confirm Order</p>
+								</AlertDialogTrigger>
 								<AlertDialogContent>
 									<AlertDialogHeader>
-										<AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+										<AlertDialogTitle>
+											<img src={confirmed} alt="" />
+											<h1>Order Confirmed</h1>
+											<p>We hope you enjoy our food!</p>
+										</AlertDialogTitle>
 										<AlertDialogDescription>
 											{dialogueContent}
-											<div>
+											<div className='flex justify-between'>
 												<p>Order Total</p>
 												<p>${orderTotal}</p>
 											</div>
