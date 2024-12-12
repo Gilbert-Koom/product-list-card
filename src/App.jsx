@@ -182,66 +182,68 @@ function App() {
   },[totalItemsInCart])
 
 
-
   return (
     <>
-			<p className='ml-[7.5%]'>Desserts</p>
-      <ul>
-        {foods}
-      </ul>
+			<div className='md:grid md:grid-cols-10'>
+				<div className='col-span-7'>
+					<p className='ml-[7.5%]'>Desserts</p>
+						<ul className='md:grid md:grid-cols-3'>
+							{foods}
+						</ul>
+				</div>
+				<div className='bg-yellow-300 w-[85%] m-auto md:col-span-3 md:absolute md:w-[30%] md:left-[72%] md:top-[4%]'>
+					<p className='w-[79%] m-auto text-[red] '>Your Cart({totalItemsInCart})</p>
+					<div>
+						{
+							isCartEmpty ?
+							<div className=''>
+								<div className='flex justify-center items-center'>
+									<img src={Empty} alt="" />
+								</div>
+								<p className='flex justify-center'><p className=''>Your added items will appear here</p></p>
+							</div>:
+							<div className="">
+								<ul className='w-[85%] m-auto'>{filteredItems}</ul>
+								<div className='flex justify-between w-[77%] m-auto'>
+									<p>Order Total </p>
+									<p>${orderTotal}</p>
+								</div>
+								<div className='flex m-auto justify-center bg-slate-600 w-[77%] rounded-md'>
+									<img src={Carbon} alt="" />
+									<p className=''>This carbon neutral delivery</p>
 
-			<div className='bg-yellow-300 w-[85%] m-auto'>
-				<p className='w-[79%] m-auto text-[red]'>Your Cart({totalItemsInCart})</p>
-				<div>
-					{
-						isCartEmpty ?
-						<div className=''>
-							<div className='flex justify-center items-center'>
-								<img src={Empty} alt="" />
+								</div>
+								
+								<AlertDialog>
+									<AlertDialogTrigger className='w-[77%] bg-green-100 rounded-lg m-auto flex justify-center items-center'>
+										<p>Confirm Order</p>
+									</AlertDialogTrigger>
+									<AlertDialogContent>
+										<AlertDialogHeader>
+											<AlertDialogTitle>
+												<img src={confirmed} alt="" />
+												<h1>Order Confirmed</h1>
+												<p>We hope you enjoy our food!</p>
+											</AlertDialogTitle>
+											<AlertDialogDescription>
+												{dialogueContent}
+												<div className='flex justify-between'>
+													<p>Order Total</p>
+													<p>${orderTotal}</p>
+												</div>
+											</AlertDialogDescription>
+										</AlertDialogHeader>
+										<AlertDialogFooter>
+											
+											<AlertDialogAction onClick={()=>{alertAction()}}>Start New Order</AlertDialogAction>
+										</AlertDialogFooter>
+									</AlertDialogContent>
+								</AlertDialog>
 							</div>
-							<p className='flex justify-center'><p className=''>Your added items will appear here</p></p>
-						</div>:
-						<div className="">
-							<ul className='w-[85%] m-auto'>{filteredItems}</ul>
-							<div className='flex justify-between w-[77%] m-auto'>
-								<p>Order Total </p>
-								<p>${orderTotal}</p>
-							</div>
-							<div className='flex m-auto justify-center bg-slate-600 w-[77%] rounded-md'>
-								<img src={Carbon} alt="" />
-								<p className=''>This carbon neutral delivery</p>
 
-							</div>
-							
-							<AlertDialog>
-								<AlertDialogTrigger className='w-[77%] bg-green-100 rounded-lg m-auto flex justify-center items-center'>
-									<p>Confirm Order</p>
-								</AlertDialogTrigger>
-								<AlertDialogContent>
-									<AlertDialogHeader>
-										<AlertDialogTitle>
-											<img src={confirmed} alt="" />
-											<h1>Order Confirmed</h1>
-											<p>We hope you enjoy our food!</p>
-										</AlertDialogTitle>
-										<AlertDialogDescription>
-											{dialogueContent}
-											<div className='flex justify-between'>
-												<p>Order Total</p>
-												<p>${orderTotal}</p>
-											</div>
-										</AlertDialogDescription>
-									</AlertDialogHeader>
-									<AlertDialogFooter>
-										
-										<AlertDialogAction onClick={()=>{alertAction()}}>Start New Order</AlertDialogAction>
-									</AlertDialogFooter>
-								</AlertDialogContent>
-							</AlertDialog>
-						</div>
+						}
 
-					}
-
+					</div>
 				</div>
 			</div>
 
