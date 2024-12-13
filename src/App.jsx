@@ -58,14 +58,16 @@ function App() {
     .map(item => (
       <li key={item.id} className='flex items-center justify-between w-[90%] m-auto'>
 				<div>
-				<p>{item.name}</p>
-				<p>
-          {item.number}&#215;  @ ${item.price} = ${item.number * item.price}
-        </p>
+				<p className='text-rose900'>{item.name}</p>
+				<div>
+          <span className='text-red'>{item.number}&#215;</span>
+					<span className='text-rose500'>@ ${item.price}</span>  
+					<span className='text-rose500'>${item.number * item.price}</span>
+        </div>
 
 				</div>
 				<button onClick={() => removeFromCart(item.id)}>
-					<img src={Remover} alt="" />
+					<img src={Remover} alt="" className='inline-block h-5 w-5 rounded-full ring-2 ring-rose500 p-1'/>
 				</button>
         
         
@@ -76,27 +78,27 @@ function App() {
 		const dialogueContent = items
     .filter(item => item.number > 0)
     .map(item => (
-      <li key={item.id} className='flex w-[80%] bg-red-950 justify-around items-center'>
+      <li key={item.id} className='flex w-[80%] bg-red-950 justify-between items-center'>
 				<div>
-          {item.id===0 ? <img src={waffle} alt="" className='w-5 h-5'/> : <p></p>}
-          {item.id===1 ? <img src={creme} alt="" className='w-5 h-5'/> : <p></p>}
-          {item.id===2 ? <img src={macaron} alt="" className='w-5 h-5'/> : <p></p>}
-          {item.id===3 ? <img src={Tiramisu} alt="" className='w-5 h-5'/> : <p></p>}
-          {item.id===4 ? <img src={Baklava} alt="" className='w-5 h-5'/> : <p></p>}
-          {item.id===5 ? <img src={Pie} alt="" className='w-5 h-5'/> : <p></p>}
-          {item.id===6 ? <img src={Cake} alt="" className='w-5 h-5' /> : <p></p>}
-          {item.id===7 ? <img src={Brownie} alt=""  className='w-5 h-5'/> : <p></p>}
-          {item.id===8 ? <img src={Cotta} alt="" className='w-5 h-5'/> : <p></p>}
+          {item.id===0 ? <img src={waffle} alt="" className='w-[48px] h-[48px]'/> : <p></p>}
+          {item.id===1 ? <img src={creme} alt="" className='w-[48px] h-[48px]'/> : <p></p>}
+          {item.id===2 ? <img src={macaron} alt="" className='w-[48px] h-[48px]'/> : <p></p>}
+          {item.id===3 ? <img src={Tiramisu} alt="" className='w-[48px] h-[48px]'/> : <p></p>}
+          {item.id===4 ? <img src={Baklava} alt="" className='w-[48px] h-[48px]'/> : <p></p>}
+          {item.id===5 ? <img src={Pie} alt="" className='w-[48px] h-[48px]'/> : <p></p>}
+          {item.id===6 ? <img src={Cake} alt="" className='w-[48px] h-[48px]' /> : <p></p>}
+          {item.id===7 ? <img src={Brownie} alt=""  className='w-[48px] h-[48px]'/> : <p></p>}
+          {item.id===8 ? <img src={Cotta} alt="" className='w-[48px] h-[48px]'/> : <p></p>}
 
 				</div>
 				<div className=''>
-					<p>{item.name}</p>
-					<div>
-						 {item.number}&#215; @ ${item.price}
-
+					<p className='text-rose900'>{item.name}</p>
+					<div>	  
+						 <span className='text-red'>{item.number}&#215;</span>
+						 <span className='text-rose500'>@ ${item.price}</span>
 					</div>
 				</div>
-				<p>${item.number * item.price}</p>
+				<p className='text-rose900'>${item.number * item.price}</p>
       </li>
     ));
 
@@ -140,15 +142,15 @@ function App() {
           {item.id===8 ? <img src={Cotta} alt=""  className='rounded-md'/> : <p></p>}
 					<button className={item.button1} onClick={()=>changeStyle(item.id)} id='button_1'>
             <img src={Cart} alt="" />
-            <p>Add To Cart</p>
+            <p className='text-rose900'>Add To Cart</p>
           </button>
 					<div className={item.button2} id='second_button'>
 						<button onClick={() => handleSubtractToCart(item.id)}>
-							<img src={Decrement} alt="" />
+							<img src={Decrement} className='inline-block h-5 w-5 rounded-full ring-2 ring-white p-1' alt="" />
 						</button>
 						<p className='text-white'>{item.number}</p>
 						<button onClick={() => handleAddToCart(item.id)}>
-							<img src={Increment} alt="" />
+							<img src={Increment} alt="" className='inline-block h-5 w-5 rounded-full ring-2 ring-white p-1' />
 						</button>
 
 					</div>
@@ -160,9 +162,9 @@ function App() {
 				
 			</div>
 			<div>
-				<p>{item.category}</p>   
-				<p>{item.name}</p>
-				<p>${item.price}</p>
+				<p className='text-rose500'>{item.category}</p>   
+				<p className='text-rose900'>{item.name}</p>
+				<p className='text-red'>${item.price}</p>
 			</div>
 
 		</li>
@@ -186,13 +188,13 @@ function App() {
     <>
 			<div className='md:grid md:grid-cols-10 lg:grid-cols-10'>
 				<div className='md:col-span-7 lg:col-span-7'>
-					<p className='ml-[7.5%]'>Desserts</p>
+					<p className='ml-[7.5%] text-rose900'>Desserts</p>
 						<ul className='md:grid md:grid-cols-2 lg:grid lg:grid-cols-3'>
 							{foods}
 						</ul>
 				</div>
 				<div className='bg-yellow-300 w-[85%] m-auto md:col-span-3 md:absolute md:w-[30%] md:left-[72%] md:top-[4%] lg:col-span-3 lg:absolute lg:w-[30%] lg:left-[72%] lg:top-[4%]'>
-					<p className='w-[79%] m-auto text-[red] '>Your Cart({totalItemsInCart})</p>
+					<p className='w-[79%] m-auto text-red'>Your Cart({totalItemsInCart})</p>
 					<div>
 						{
 							isCartEmpty ?
@@ -200,42 +202,44 @@ function App() {
 								<div className='flex justify-center items-center'>
 									<img src={Empty} alt="" />
 								</div>
-								<p className='flex justify-center'><p className=''>Your added items will appear here</p></p>
+								<p className='flex justify-center'><p className='text-rose500'>Your added items will appear here</p></p>
 							</div>:
 							<div className="">
 								<ul className='w-[85%] m-auto'>{filteredItems}</ul>
 								<div className='flex justify-between w-[77%] m-auto'>
-									<p>Order Total </p>
-									<p>${orderTotal}</p>
+									<p className='text-rose900'>Order Total </p>
+									<p className='text-rose900'>${orderTotal}</p>
 								</div>
 								<div className='flex m-auto justify-center bg-slate-600 w-[77%] rounded-md'>
 									<img src={Carbon} alt="" />
-									<p className=''>This carbon neutral delivery</p>
+									<p className='text-rose900'>This carbon neutral delivery</p>
 
 								</div>
 								
 								<AlertDialog>
-									<AlertDialogTrigger className='w-[77%] bg-green-100 rounded-lg m-auto flex justify-center items-center'>
-										<p>Confirm Order</p>
+									<AlertDialogTrigger className='w-[77%] bg-red rounded-lg m-auto flex justify-center items-center'>
+										<p className='text-white'>Confirm Order</p>
 									</AlertDialogTrigger>
 									<AlertDialogContent>
 										<AlertDialogHeader>
 											<AlertDialogTitle>
 												<img src={confirmed} alt="" />
-												<h1>Order Confirmed</h1>
-												<p>We hope you enjoy our food!</p>
+												<h1 className='text-rose900'>Order Confirmed</h1>
+												<p className='text-rose500'>We hope you enjoy our food!</p>
 											</AlertDialogTitle>
 											<AlertDialogDescription>
 												{dialogueContent}
-												<div className='flex justify-between'>
+												<div className='flex justify-between text-rose900'>
 													<p>Order Total</p>
 													<p>${orderTotal}</p>
 												</div>
 											</AlertDialogDescription>
 										</AlertDialogHeader>
-										<AlertDialogFooter>
+										<AlertDialogFooter className='bg-red text-white rounded-[999px]'>
 											
-											<AlertDialogAction onClick={()=>{alertAction()}}>Start New Order</AlertDialogAction>
+											<AlertDialogAction onClick={()=>{alertAction()}}>
+												<p className=''>Start New Order</p>
+											</AlertDialogAction>
 										</AlertDialogFooter>
 									</AlertDialogContent>
 								</AlertDialog>
