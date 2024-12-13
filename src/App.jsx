@@ -186,14 +186,14 @@ function App() {
 
   return (
     <>
-			<div className='md:grid md:grid-cols-10 lg:grid-cols-10'>
-				<div className='md:col-span-7 lg:col-span-7'>
+			<div className='lg:grid lg:grid-cols-10'>
+				<div className='lg:col-span-7'>
 					<p className='ml-[7.5%] text-rose900'>Desserts</p>
-						<ul className='md:grid md:grid-cols-2 lg:grid lg:grid-cols-3'>
+						<ul className='md:grid md:grid-cols-3 lg:grid lg:grid-cols-3'>
 							{foods}
 						</ul>
 				</div>
-				<div className='bg-yellow-300 w-[85%] m-auto md:col-span-3 md:absolute md:w-[30%] md:left-[72%] md:top-[4%] lg:col-span-3 lg:absolute lg:w-[30%] lg:left-[72%] lg:top-[4%]'>
+				<div className='w-[85%] m-auto lg:col-span-3 bg-white'>
 					<p className='w-[79%] m-auto text-red'>Your Cart({totalItemsInCart})</p>
 					<div>
 						{
