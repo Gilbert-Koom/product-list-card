@@ -186,67 +186,69 @@ function App() {
 
   return (
     <>
-			<div className='lg:grid lg:grid-cols-10'>
+			<div className='lg:grid lg:grid-cols-10 w-[90%] m-auto mt-[5%] mb-[5%]'>
 				<div className='lg:col-span-7'>
 					<p className='ml-[7.5%] text-rose900'>Desserts</p>
 						<ul className='md:grid md:grid-cols-3 lg:grid lg:grid-cols-3'>
 							{foods}
 						</ul>
 				</div>
-				<div className='w-[85%] m-auto lg:col-span-3 bg-white'>
-					<p className='w-[79%] m-auto text-red'>Your Cart({totalItemsInCart})</p>
-					<div>
-						{
-							isCartEmpty ?
-							<div className=''>
-								<div className='flex justify-center items-center'>
-									<img src={Empty} alt="" />
-								</div>
-								<p className='flex justify-center'><p className='text-rose500'>Your added items will appear here</p></p>
-							</div>:
-							<div className="">
-								<ul className='w-[85%] m-auto'>{filteredItems}</ul>
-								<div className='flex justify-between w-[77%] m-auto'>
-									<p className='text-rose900'>Order Total </p>
-									<p className='text-rose900'>${orderTotal}</p>
-								</div>
-								<div className='flex m-auto justify-center bg-slate-600 w-[77%] rounded-md'>
-									<img src={Carbon} alt="" />
-									<p className='text-rose900'>This carbon neutral delivery</p>
+				<div className='w-[85%] m-auto lg:col-span-3 h-full'>
+					<div className='bg-white'>
+						<p className='w-[79%] m-auto text-red'>Your Cart({totalItemsInCart})</p>
+						<div>
+							{
+								isCartEmpty ?
+								<div className=''>
+									<div className='flex justify-center items-center'>
+										<img src={Empty} alt="" />
+									</div>
+									<p className='flex justify-center'><p className='text-rose500'>Your added items will appear here</p></p>
+								</div>:
+								<div className="">
+									<ul className='w-[85%] m-auto'>{filteredItems}</ul>
+									<div className='flex justify-between w-[77%] m-auto'>
+										<p className='text-rose900'>Order Total </p>
+										<p className='text-rose900'>${orderTotal}</p>
+									</div>
+									<div className='flex m-auto justify-center bg-slate-600 w-[77%] rounded-md'>
+										<img src={Carbon} alt="" />
+										<p className='text-rose900'>This carbon neutral delivery</p>
 
+									</div>
+									
+									<AlertDialog>
+										<AlertDialogTrigger className='w-[77%] bg-red rounded-lg m-auto flex justify-center items-center'>
+											<p className='text-white'>Confirm Order</p>
+										</AlertDialogTrigger>
+										<AlertDialogContent>
+											<AlertDialogHeader>
+												<AlertDialogTitle>
+													<img src={confirmed} alt="" />
+													<h1 className='text-rose900'>Order Confirmed</h1>
+													<p className='text-rose500'>We hope you enjoy our food!</p>
+												</AlertDialogTitle>
+												<AlertDialogDescription>
+													{dialogueContent}
+													<div className='flex justify-between text-rose900'>
+														<p>Order Total</p>
+														<p>${orderTotal}</p>
+													</div>
+												</AlertDialogDescription>
+											</AlertDialogHeader>
+											<AlertDialogFooter className='bg-red text-white rounded-[999px]'>
+												
+												<AlertDialogAction onClick={()=>{alertAction()}}>
+													<p className=''>Start New Order</p>
+												</AlertDialogAction>
+											</AlertDialogFooter>
+										</AlertDialogContent>
+									</AlertDialog>
 								</div>
-								
-								<AlertDialog>
-									<AlertDialogTrigger className='w-[77%] bg-red rounded-lg m-auto flex justify-center items-center'>
-										<p className='text-white'>Confirm Order</p>
-									</AlertDialogTrigger>
-									<AlertDialogContent>
-										<AlertDialogHeader>
-											<AlertDialogTitle>
-												<img src={confirmed} alt="" />
-												<h1 className='text-rose900'>Order Confirmed</h1>
-												<p className='text-rose500'>We hope you enjoy our food!</p>
-											</AlertDialogTitle>
-											<AlertDialogDescription>
-												{dialogueContent}
-												<div className='flex justify-between text-rose900'>
-													<p>Order Total</p>
-													<p>${orderTotal}</p>
-												</div>
-											</AlertDialogDescription>
-										</AlertDialogHeader>
-										<AlertDialogFooter className='bg-red text-white rounded-[999px]'>
-											
-											<AlertDialogAction onClick={()=>{alertAction()}}>
-												<p className=''>Start New Order</p>
-											</AlertDialogAction>
-										</AlertDialogFooter>
-									</AlertDialogContent>
-								</AlertDialog>
-							</div>
 
-						}
+							}
 
+						</div>
 					</div>
 				</div>
 			</div>
