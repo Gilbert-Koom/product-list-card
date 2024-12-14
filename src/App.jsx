@@ -142,7 +142,7 @@ function App() {
           {item.id===8 ? <img src={Cotta} alt=""  className='rounded-md'/> : <p></p>}
 					<button className={item.button1} onClick={()=>changeStyle(item.id)} id='button_1'>
             <img src={Cart} alt="" />
-            <p className='text-rose900'>Add To Cart</p>
+            <p className='text-rose900 md:text-preset4bold'>Add To Cart</p>
           </button>
 					<div className={item.button2} id='second_button'>
 						<button onClick={() => handleSubtractToCart(item.id)}>
@@ -162,9 +162,9 @@ function App() {
 				
 			</div>
 			<div>
-				<p className='text-rose500'>{item.category}</p>   
-				<p className='text-rose900'>{item.name}</p>
-				<p className='text-red'>${item.price}</p>
+				<p className='text-rose500 md:text-preset4'>{item.category}</p>   
+				<p className='text-rose900 md:text-preset3'>{item.name}</p>
+				<p className='text-red md:text-preset3'>${item.price}</p>
 			</div>
 
 		</li>
@@ -188,14 +188,14 @@ function App() {
     <>
 			<div className='lg:grid lg:grid-cols-10 w-[90%] m-auto mt-[5%] mb-[5%]'>
 				<div className='lg:col-span-7'>
-					<p className='ml-[7.5%] text-rose900'>Desserts</p>
+					<p className='ml-[7.5%] text-rose900 text-preset2 md:text-preset1'>Desserts</p>
 						<ul className='md:grid md:grid-cols-3 lg:grid lg:grid-cols-3'>
 							{foods}
 						</ul>
 				</div>
 				<div className='w-[85%] m-auto lg:col-span-3 h-full'>
 					<div className='bg-white'>
-						<p className='w-[79%] m-auto text-red'>Your Cart({totalItemsInCart})</p>
+						<p className='w-[79%] m-auto text-red md:text-preset2'>Your Cart({totalItemsInCart})</p>
 						<div>
 							{
 								isCartEmpty ?
@@ -203,7 +203,7 @@ function App() {
 									<div className='flex justify-center items-center'>
 										<img src={Empty} alt="" />
 									</div>
-									<p className='flex justify-center'><p className='text-rose500'>Your added items will appear here</p></p>
+									<p className='flex justify-center'><p className='text-rose500 text-preset4bold'>Your added items will appear here</p></p>
 								</div>:
 								<div className="">
 									<ul className='w-[85%] m-auto'>{filteredItems}</ul>
